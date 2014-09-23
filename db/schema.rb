@@ -19,13 +19,13 @@ ActiveRecord::Schema.define(version: 20140923174651) do
   create_table "users", force: true do |t|
     t.string   "username",                        null: false
     t.string   "password_digest",                 null: false
-    t.string   "session_id",                      null: false
+    t.string   "session_token",                   null: false
     t.boolean  "guest",           default: false, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "users", ["session_id"], name: "index_users_on_session_id", using: :btree
+  add_index "users", ["session_token"], name: "index_users_on_session_token", using: :btree
   add_index "users", ["username"], name: "index_users_on_username", using: :btree
 
 end
