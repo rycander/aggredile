@@ -15,6 +15,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'feedjira'
 gem 'backbone-on-rails'
 gem 'annotate'
+gem 'turbolinks'
 group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
