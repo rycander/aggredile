@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.1.5'
 gem 'pg'
-gem 'letter-opener'
+gem 'letter_opener'
 gem 'newrelic_rpm'
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
