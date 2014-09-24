@@ -16,6 +16,7 @@ gem 'feedjira'
 gem 'backbone-on-rails'
 gem 'annotate'
 gem 'turbolinks'
+gem 'twitter-bootstrap-rails'
 group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'

@@ -1,28 +1,44 @@
-<h1>New Session</h1>
+<div class='auth-page'>
+  <div class='auth-holder'>
+    <% if flash[:errors] %>
+      <ul>
+      <% flash[:errors].each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+      </ul>
+    <% end %>
 
-<% if flash[:errors] %>
-  <ul>
-  <% flash[:errors].each do |error| %>
-    <li><%= error %></li>
-  <% end %>
-  </ul>
-<% end %>
+    <form class="form-signin" action="<%= session_url %>" method="post">
+      <h2 class="form-signin-heading">Welcome Back</h2>
+      <input
+        type="hidden"
+        name="authenticity_token"
+        value="<%= form_authenticity_token %>">
 
-<form action="<%= session_url %>" method="post">
-  <input
-    type="hidden"
-    name="authenticity_token"
-    value="<%= form_authenticity_token %>">
+      <input type="text"
+             class="form-control"
+             placeholder="Username"
+             name="user[username]"
+             id="user_username"
+             required autofocus>
 
-  <label for="user_username">User Name</label>
-  <input type="text"
-         name="user[username]"
-         id="user_username">
-  <br>
+      <input type="password"
+             class="form-control"
+             placeholder="Password"
+             name="user[password]"
+             id="user_password">
+      <br>
 
-  <label for="user_password">Password</label>
-  <input type="password" name="user[password]" id="user_password">
-  <br>
+      <input type="submit"
+             class="button btn-lg btn-primary btn-block">
+    </form>
 
-  <input type="submit">
-</form>
+    <div>
+      Don't have an account?
+      <br>
+      <%= link_to "Sign Up", new_user_url %> or
+      <br>
+      <%= link_to "Sign in as Guest", new_user_url %>
+    </div>
+  </div>
+</div>
