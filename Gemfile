@@ -16,6 +16,7 @@ gem 'backbone-on-rails'
 gem 'annotate'
 gem 'twitter-bootstrap-rails'
 group :development, :test do
+  gem 'byebug'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'jasmine', github: 'pivotal/jasmine-gem', ref: 'e810540'

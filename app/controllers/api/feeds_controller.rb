@@ -1,19 +1,21 @@
 class Api::FeedsController < ApplicationController
+  before_action :require_user!
+  
   def index
-    render json: Feed.all
+    @feeds = Feed.all
   end
 
   def show
-    render json: Feed.find(params[:id])
+    @feed = Feed.find(params[:id])
+    @entries = @feed.entries
   end
 
   def create
-    f = Feedzilla::Feed.fetch_and_parse(feed_params)
     feed = Feed.find_or_create_by_url(feed_params)
     if feed
       render json: feed
     else
-      render json: {error: 'invalid url'}
+      render json: {error: 'invalid url'}, status: :unprocessable_entity
     end
   end
 
@@ -21,4 +23,3 @@ class Api::FeedsController < ApplicationController
     params.require(:feed).permit(:url)
   end
 end
-

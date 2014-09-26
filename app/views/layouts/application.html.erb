@@ -2,8 +2,15 @@
 <html>
 <head>
   <title>Aggredile</title>
+  <% if current_user %>
+    <%= javascript_include_tag 'application' %>
+    <script>
+      $(document).ready(function(){
+        Aggredile.initialize();
+      });
+    </script>
+  <% end %>
   <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>

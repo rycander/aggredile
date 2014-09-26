@@ -1,1 +1,5 @@
-<h1>I'M A TEMPLATE</h1>
+<ul>
+<% for (var i = 0; i < feeds.length; ++i) { %>
+  <li><%= feeds.at(i).escape('title') %></li>
+<% } %>
+</ul>

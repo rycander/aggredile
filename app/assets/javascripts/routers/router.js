@@ -1,6 +1,6 @@
 Aggredile.Routers.Router = Backbone.Router.extend({
-  initialize: function () {
-
+  initialize: function (options) {
+    this.$rootEl = options.$rootEl;
   },
 
   routes: {
@@ -8,8 +8,10 @@ Aggredile.Routers.Router = Backbone.Router.extend({
   },
 
   index: function () {
-    this.$rootEl = new RouterIndex ({
-      this.Feeds = new Aggredile.Views.All
+    Aggredile.Collections.feeds.fetch();
+    var RouterIndex = new Aggredile.Views.AllFeeds({
+      collection: Aggredile.Collections.feeds
     });
+    this.$rootEl.html(RouterIndex.render().$el);
   }
 });

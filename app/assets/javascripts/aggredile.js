@@ -7,11 +7,6 @@ window.Aggredile = {
     new Aggredile.Routers.Router({
       $rootEl: $('.reader')
     });
-    console.log('hi')
     Backbone.history.start();
   }
 };
-
-$(document).ready(function(){
-  Aggredile.initialize();
-});
