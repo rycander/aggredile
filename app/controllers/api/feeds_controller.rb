@@ -7,11 +7,13 @@ class Api::FeedsController < ApplicationController
 
   def show
     @feed = Feed.find(params[:id])
+    @feed.latest_entries
     @entries = @feed.entries
   end
 
   def create
     feed = Feed.find_or_create_by_url(feed_params)
+    feed.latest_entries;
     if feed
       render json: feed
     else

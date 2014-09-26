@@ -1,9 +1,9 @@
-Aggredile.Views.AllEntries = Backbone.View.extend({
-  template: JST['feeds/index'],
-  classname:'reader',
+Aggredile.Views.EntryShow = Backbone.CompositeView.extend({
+  template: JST['entries/show'],
+  classname:'li',
 
   initialize: function () {
-    this.listenTo(this.collection, 'sync', this.render);
+    this.listenTo(this.model, 'sync', this.render);
   },
 
   render: function () {

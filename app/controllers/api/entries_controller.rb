@@ -6,10 +6,14 @@ class Api::EntriesController < ApplicationController
   end
 
   def index
-    @entries = Feed.find(params[:feed_id]).entries
+    feed = Feed.find(params[:feed_id])
+    @entries = feed.latest_entries
   end
 
   def user_entries
+    current_user.feeds.each do |feed|
+      feed.latest_entries
+    end
     @entries = current_user.entries.order('published_at desc')
     render 'index'
   end
