@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :integer          not null, primary key
+#  username        :string(255)      not null
+#  password_digest :string(255)      not null
+#  session_token   :string(255)      not null
+#  guest           :boolean          default(FALSE), not null
+#  created_at      :datetime
+#  updated_at      :datetime
+#
+
 class User < ActiveRecord::Base
   validates :username, :password_digest, :session_token, presence: true
   validates :username, :session_token, uniqueness: true
@@ -9,6 +22,7 @@ class User < ActiveRecord::Base
 
   has_many :user_feeds, dependent: :destroy
   has_many :feeds, through: :user_feeds
+  has_many :entries, through: :feeds
 
   def User.find_by_credentials(username, password)
     user = User.find_by_username(username)

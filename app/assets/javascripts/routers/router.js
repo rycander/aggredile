@@ -9,7 +9,7 @@ Aggredile.Routers.Router = Backbone.Router.extend({
 
   index: function () {
     Aggredile.Collections.feeds.fetch();
-    var RouterIndex = new Aggredile.Views.AllFeeds({
+    var RouterIndex = new Aggredile.Views.AllEntries({
       collection: Aggredile.Collections.feeds
     });
     this.$rootEl.html(RouterIndex.render().$el);

@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: feeds
+#
+#  id          :integer          not null, primary key
+#  title       :string(255)      not null
+#  url         :string(255)      not null
+#  description :string(255)
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 class Feed < ActiveRecord::Base
   validates :title, :url, presence: true
 

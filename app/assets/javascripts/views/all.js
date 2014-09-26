@@ -1,4 +1,4 @@
-Aggredile.Views.AllFeeds = Backbone.View.extend({
+Aggredile.Views.AllEntries = Backbone.View.extend({
   template: JST['feeds/index'],
   classname:'reader',
 
@@ -8,12 +8,13 @@ Aggredile.Views.AllFeeds = Backbone.View.extend({
 
   render: function () {
     if(this.collection.length > 0) {
-      var array = [];
+      debugger;
+      var entries = [];
       this.collection.each(function (feed) {
         array = array.concat(feed.get('entries')); }
       );
       this.$el.html(this.template({
-        feeds: array
+        collection: array
       }));
     }
     return this;

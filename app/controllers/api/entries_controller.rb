@@ -8,4 +8,9 @@ class Api::EntriesController < ApplicationController
   def index
     @entries = Feed.find(params[:feed_id]).entries
   end
+
+  def user_entries
+    @entries = current_user.entries.order('published_at desc')
+    render 'index'
+  end
 end

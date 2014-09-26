@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :feeds, only: [:index, :show, :create] do
       resources :entries, only: [:index]
     end
+    get 'entries', to: 'entries#user_entries', as: 'user_entries'
     resources :entries, only: [:show]
   end
 end
