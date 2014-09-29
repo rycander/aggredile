@@ -12,8 +12,9 @@ class Api::FeedsController < ApplicationController
   end
 
   def create
-    feed = Feed.find_or_create_by_url(feed_params)
-    feed.latest_entries;
+    feed = Feed.find_or_create_by_url(feed_params[:url])
+    feed.latest_entries
+    UserFeed.create!(user_id: current_user.id, feed_id: feed.id)
     if feed
       render json: feed
     else

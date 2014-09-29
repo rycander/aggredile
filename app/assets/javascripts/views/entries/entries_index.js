@@ -3,14 +3,15 @@ Aggredile.Views.EntriesIndex = Backbone.CompositeView.extend({
 
   events:  {
     // "click li": "toggleExpand",
-    "submit form": "newFeed"
+    "submit form.newfeed": "newFeed",
+    "click .refresh": "refresh"
   },
 
   initialize: function (options) {
     this.collection = options.collection;
     this.feeds = options.feeds;
     this.listenTo(this.collection, 'add', this.addEntry);
-    this.listenTo(this.collection, 'sync', this.render);
+    this.listenTo(this.collection, 'sync add', this.render);
     this.listenTo(this.feeds, 'sync', this.render);
   },
 
@@ -24,7 +25,16 @@ Aggredile.Views.EntriesIndex = Backbone.CompositeView.extend({
     event.preventDefault();
     var url = $('#new-feed-url').val();
     $('#new-feed-url').val('');
-    
+    var feed = new Aggredile.Models.Feed({url: url});
+    feed.save();
+  },
+
+  refresh: function (){
+    event.preventDefault();
+    console.log('hey');
+    // this.collection.fetch();
+    // this.feeds.fetch();
+    // this.render();
   },
 
   toggleExpand: function (newEntry) {
@@ -46,7 +56,7 @@ Aggredile.Views.EntriesIndex = Backbone.CompositeView.extend({
 
   render: function () {
     var renderedContent = this.template({});
-
+    // console.log('rendered');
     this.$el.html(renderedContent);
     this.attachSubviews();
     return this;
