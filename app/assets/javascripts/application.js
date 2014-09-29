@@ -3,6 +3,8 @@
 //= require underscore
 //= require backbone
 //= require twitter/bootstrap
+//= require backbone.marionette
+//= require composite_view
 //= require aggredile
 //= require_tree ../templates
 //= require_tree ./models

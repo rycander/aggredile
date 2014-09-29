@@ -1,0 +1,8 @@
+<div class="header toggle-on"><%= entry.escape('title') %></div>
+<div class='toggle-off'><br></div>
+
+<div class='expanded-info'>
+  <h3 class='title'><%= entry.escape('title') %></h3>
+  <div class='info'><%= entry.escape('published_at') %></div>
+  <div class='content'><%= entry.get('content') %></div>
+</div>

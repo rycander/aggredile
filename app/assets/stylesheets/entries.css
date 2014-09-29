@@ -1,0 +1,15 @@
+li.entry * {
+  display: none;
+}
+
+li.entry div.header {
+  display: block;
+}
+
+li.entry.active * {
+  display: block;
+}
+
+li.entry.active div.header{
+  display:none;
+}
