@@ -1,0 +1,21 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <div class='toggle-off'><br></div>
+    <h3 class="panel-title">
+      <ul class='list-inline'>
+        <li>
+          <a href="<%= entry.escape('url') %>">
+            <%= entry.escape('title') %>
+          </a>
+        </li>
+        <li class='pull-right'>
+          <%= title %> -  
+          <%= entry.escape('published_at') %>
+        </li>
+      </ul>
+    </h3>
+  </div>
+  <div class="content panel-body">
+    <%= entry.get('content') %>
+  </div>
+</div>

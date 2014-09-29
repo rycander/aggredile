@@ -5,6 +5,11 @@ Aggredile.Views.EntryShow = Backbone.View.extend({
   className: 'entry',
   active: false,
 
+  events: {
+    'click .toggle-on': 'activate',
+    'click .toggle-off': 'deactivate'
+  },
+
   id: function() {
     return this.model.id;
   },
@@ -13,14 +18,29 @@ Aggredile.Views.EntryShow = Backbone.View.extend({
     this.listenTo(this.model, 'sync', this.render);
   },
 
+  deactivate: function (event) {
+    this.active = false;
+    this.render();
+  },
+
+  activate: function(event) {
+    this.trigger('activate', this);
+    this.active = true;
+    this.render();
+  },
+
   render: function () {
+    var feed = Aggredile.Collections.feeds.get(this.model.get('feed_id'));
     if (this.active) {
       this.$el.html(this.showTemplate({
-        entry: this.model
+                entry: this.model,
+        title: feed.escape('title')
+
       }));
     } else {
       this.$el.html(this.titleTemplate({
-        entry: this.model
+        entry: this.model,
+        title: feed.escape('title')
       }));
     }
     return this;

@@ -1,1 +1,1 @@
-json.(entry, :id, :title, :content, :published_at, :feed_id)
+json.(entry, :id, :title, :content, :published_at, :feed_id, :url)

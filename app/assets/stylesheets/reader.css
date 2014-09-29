@@ -1,0 +1,13 @@
+.reader .panel-title a{
+  color: white;
+}
+
+.reader{
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+}
+
+.reader ul li.entry div.panel {
+  margin-bottom: 1px;
+}
