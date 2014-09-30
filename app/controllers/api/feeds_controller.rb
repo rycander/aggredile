@@ -13,9 +13,9 @@ class Api::FeedsController < ApplicationController
 
   def create
     feed = Feed.find_or_create_by_url(feed_params[:url])
-    feed.latest_entries
-    UserFeed.create!(user_id: current_user.id, feed_id: feed.id)
     if feed
+      feed.latest_entries
+      UserFeed.create!(user_id: current_user.id, feed_id: feed.id)
       render json: feed
     else
       render json: {error: 'invalid url'}, status: :unprocessable_entity

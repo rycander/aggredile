@@ -1,7 +1,11 @@
 <div class="panel panel-primary">
   <div class="panel-heading">
     <h3 class="panel-title toggle-on">
-      <ul class='list-inline'>
+      <% if (!entry.get('entry_visit_id')) { %>
+        <ul class='list-inline unread'>
+      <% } else { %>
+        <ul class='list-inline'>
+      <% }%>
         <li><%= entry.escape('title') %></li>
         <li class='pull-right clearfix'>
           <%= title %> - 

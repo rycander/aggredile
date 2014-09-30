@@ -12,6 +12,10 @@
   margin-bottom: 1px;
 }
 
+.reader ul.unread {
+  font-weight: bold;
+}
+
 .reader form {
   width: 100%;
 }

@@ -14,7 +14,7 @@
 
 class Entry < ActiveRecord::Base
   belongs_to :feed, touch: true
-  has_many :entry_visits
+  has_many :entry_visits, dependent: :destroy
 
   def self.create_from_json!(entry, feed)
     Entry.create!({

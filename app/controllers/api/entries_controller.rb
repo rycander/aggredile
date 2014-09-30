@@ -16,6 +16,7 @@ class Api::EntriesController < ApplicationController
     end
     @entries = current_user.entries.order('published_at  desc')
       .page(params[:page] || 1)
+    @entry_visit_hashes = Hash[current_user.entry_visits.pluck(:entry_id, :id)]
     render 'index'
   end
 end

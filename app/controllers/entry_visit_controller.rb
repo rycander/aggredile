@@ -1,0 +1,2 @@
+class EntryVisitController < ApplicationController
+end

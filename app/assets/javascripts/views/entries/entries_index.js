@@ -37,7 +37,6 @@ Aggredile.Views.EntriesIndex = Backbone.CompositeView.extend({
 
   refresh: function (){
     event.preventDefault();
-    console.log('event');
     this.collection.fetch();
     this.feeds.fetch();
   },
