@@ -1,5 +1,5 @@
 Aggredile.Models.Feed = Backbone.Model.extend({
-  url: 'api/feeds',
+  urlRoot: 'api/feeds',
 
 
   entries: function () {
