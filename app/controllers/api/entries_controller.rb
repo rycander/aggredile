@@ -14,9 +14,8 @@ class Api::EntriesController < ApplicationController
     current_user.feeds.each do |feed|
       feed.latest_entries
     end
-    @entries = current_user.entries.order('published_at desc')
+    @entries = current_user.entries.order('published_at  desc')
       .page(params[:page] || 1)
-    @entries = @entries.to_a.reverse
     render 'index'
   end
 end

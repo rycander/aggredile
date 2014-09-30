@@ -13,7 +13,8 @@
 #
 
 class Entry < ActiveRecord::Base
-  belongs_to :feed
+  belongs_to :feed, touch: true
+  has_many :entry_visits
 
   def self.create_from_json!(entry, feed)
     Entry.create!({

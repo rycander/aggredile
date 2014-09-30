@@ -1,10 +1,11 @@
 Aggredile.Views.EntriesIndex = Backbone.CompositeView.extend({
   template: JST['entries/index'],
-
+  pageCount: 1,
   events:  {
     // "click li": "toggleExpand",
     "submit form.newfeed": "newFeed",
-    "click .refresh": "refresh"
+    "click .refresh": "refresh",
+    "click .more": "addMore"
   },
 
   initialize: function (options) {
@@ -27,6 +28,11 @@ Aggredile.Views.EntriesIndex = Backbone.CompositeView.extend({
     $('#new-feed-url').val('');
     var feed = new Aggredile.Models.Feed({url: url});
     feed.save();
+  },
+
+  addMore: function () {
+    this.pageCount += 1;
+    this.collection.next();
   },
 
   refresh: function (){

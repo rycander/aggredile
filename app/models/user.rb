@@ -23,6 +23,8 @@ class User < ActiveRecord::Base
   has_many :user_feeds, dependent: :destroy
   has_many :feeds, through: :user_feeds
   has_many :entries, through: :feeds
+  has_many :entry_views, dependent: :destroy
+  has_many :viewed_entries, through: :entry_views
 
   def User.find_by_credentials(username, password)
     user = User.find_by_username(username)
