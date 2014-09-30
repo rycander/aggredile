@@ -17,7 +17,7 @@ Aggredile.Views.EntriesIndex = Backbone.CompositeView.extend({
 
   addEntry: function (model) {
     var showView = new Aggredile.Views.EntryShow({model: model});
-    this.addSubview('ul.entry-holder', showView);
+    this.prependSubview('ul.entry-holder', showView);
     this.listenTo(showView, 'activate', this.toggleExpand);
   },
 
@@ -31,20 +31,12 @@ Aggredile.Views.EntriesIndex = Backbone.CompositeView.extend({
 
   refresh: function (){
     event.preventDefault();
-    console.log('hey');
-    // this.collection.fetch();
-    // this.feeds.fetch();
-    // this.render();
+    console.log('event');
+    this.collection.fetch();
+    this.feeds.fetch();
   },
 
   toggleExpand: function (newEntry) {
-    // var $eventTarget = $(event.currentTarget);
-    // if (!$(event.target).hasClass('expanded-info')){
-    //   $('li').removeClass('active');
-    // }
-    // if ($(event.target).hasClass('header')){
-    //   $eventTarget.addClass('active');
-    // }
     if (this.activeEntry) {
       this.activeEntry.active = false;
       this.activeEntry.render();
@@ -56,7 +48,7 @@ Aggredile.Views.EntriesIndex = Backbone.CompositeView.extend({
 
   render: function () {
     var renderedContent = this.template({});
-    // console.log('rendered');
+    console.log('rendered');
     this.$el.html(renderedContent);
     this.attachSubviews();
     return this;

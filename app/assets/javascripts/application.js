@@ -2,7 +2,7 @@
 //= require jquery_ujs
 //= require underscore
 //= require backbone
-//= require twitter/bootstrap
+//= require bootstrap
 //= require backbone.marionette
 //= require composite_view
 //= require aggredile

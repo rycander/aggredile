@@ -11,3 +11,7 @@
 .reader ul li.entry div.panel {
   margin-bottom: 1px;
 }
+
+.reader form * {
+  display: inline-block;
+}

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       resources :entries, only: [:index]
     end
     get 'entries', to: 'entries#user_entries', as: 'user_entries'
+    get 'entries/:page', to: 'entries#user_entries', as: 'user_entries_at_page'
     resources :entries, only: [:show]
   end
 end
