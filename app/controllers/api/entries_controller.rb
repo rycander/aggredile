@@ -7,7 +7,10 @@ class Api::EntriesController < ApplicationController
 
   def index
     feed = Feed.find(params[:feed_id])
-    @entries = feed.latest_entries
+    @entries = feed.latest_entries.order('published_at  desc')
+      .page(params[:page] || 1)
+    @feed_title_hash = {feed.id => feed.title}
+    @entry_visit_hashes = Hash[current_user.entry_visits.pluck(:entry_id, :id)]
   end
 
   def user_entries
@@ -17,6 +20,7 @@ class Api::EntriesController < ApplicationController
     @entries = current_user.entries.order('published_at  desc')
       .page(params[:page] || 1)
     @entry_visit_hashes = Hash[current_user.entry_visits.pluck(:entry_id, :id)]
+    @feed_title_hash = Hash[Feed.pluck(:id, :title)]
     render 'index'
   end
 end

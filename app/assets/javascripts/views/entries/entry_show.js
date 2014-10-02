@@ -32,17 +32,13 @@ Aggredile.Views.EntryShow = Backbone.View.extend({
   },
 
   render: function () {
-    var feed = Aggredile.Collections.feeds.get(this.model.get('feed_id'));
     if (this.active) {
       this.$el.html(this.showTemplate({
-                entry: this.model,
-        title: feed.escape('title')
-
+        entry: this.model
       }));
     } else {
       this.$el.html(this.titleTemplate({
-        entry: this.model,
-        title: feed.escape('title')
+        entry: this.model
       }));
     }
     return this;

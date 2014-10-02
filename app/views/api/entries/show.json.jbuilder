@@ -1,1 +1,1 @@
-json.partial!('entry', entry: @entry)
+json.partial!('entry', entry: @entry, feed_title: @feed_title)

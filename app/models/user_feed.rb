@@ -10,6 +10,7 @@
 #
 
 class UserFeed < ActiveRecord::Base
+  validates :feed_id, uniqueness: {scope: :user_id}
   belongs_to(:feed)
   belongs_to(:user)
 end

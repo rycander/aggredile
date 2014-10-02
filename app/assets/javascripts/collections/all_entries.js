@@ -1,7 +1,12 @@
 Aggredile.Collections.AllEntries = Backbone.Collection.extend ({
   model: Aggredile.Models.Entry,
 
+  initialize: function (model,  options) {
+    this.id = options.id;
+  },
+
   url: function() {
+    if (this.id) return 'api/feeds/'+ this.id + '/entries';
     return "api/entries/" + this.page();
   },
 
@@ -15,8 +20,5 @@ Aggredile.Collections.AllEntries = Backbone.Collection.extend ({
     this.fetch();
   },
 
-  initialize: function (options) {
-  }
-
 });
-Aggredile.Collections.entries = new Aggredile.Collections.AllEntries({data: {page: 1}});
+Aggredile.Collections.entries = new Aggredile.Collections.AllEntries([], {});

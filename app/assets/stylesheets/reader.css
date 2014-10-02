@@ -3,9 +3,18 @@
 }
 
 .reader{
+  margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
   width: 70%;
+}
+
+button.button_to {
+  margin-left: 20px;
+}
+
+.reader .entry-holder {
+  padding: 25px;
 }
 
 .reader ul li.entry div.panel {
@@ -16,17 +25,36 @@
   font-weight: bold;
 }
 
-.reader form {
-  width: 100%;
+.reader .home {
+  margin: auto;
+  display: block;
+}
+
+.reader .refresh-bar{
+  margin-top: 20px;
+}
+
+.reader h3.feed-title {
+  display: inline-block;
+}
+
+.reader button.refresh {
+  float: left;
 }
 
 .reader form.newfeed {
   margin-bottom: 10px;
+  display: inline-block;
+  float: right;
+  width: calc(100% - 40px);
 }
 
 .reader form.newfeed input {
-  float: right;
-  width: calc(100% - 40px);
+  width: 100%;
+}
+
+.reader div.header {
+  min-height: 100px;
 }
 
 .reader div.more {

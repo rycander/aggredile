@@ -1,11 +1,33 @@
-<button class='refresh btn btn-success'><span class="glyphicon glyphicon-refresh"></span></button>
-<form class="newfeed" >
-  <input type="text"
-         id="new-feed-url"
-         class="form-control"
-         placeholder="New feed URL"
-         required>
-</form>
+<div class='home btn btn-success'><h1><strong>Aggredile</strong></h1></div>
+
+<div class='refresh-bar'>
+  <button class='refresh btn btn-success'><span class="glyphicon glyphicon-refresh"></span></button>
+  <form class="newfeed" >
+    <input type="text"
+           id="new-feed-url"
+           class="form-control"
+           placeholder="New feed URL"
+           required>
+  </form>
+</div>
+<div class='header'>
+  <% if (feed) { %>
+    <h3 class='feed-title'><%= feed.escape('title') %></h3>
+
+    <% if (feed.escape('subscribed')) { %>
+      <div class='unsubscribe btn btn-danger'>
+        <span class='glyphicon glyphicon-minus'></span>
+        Unsubscribe
+      </div>
+    <% } else { %>
+      <div class='subscribe btn btn-success'>
+        <span class='glyphicon glyphicon-plus'></span>
+        Subscribe
+      </div>
+    <% } %>
+    <div><%= feed.escape('description') %></div>
+  <% } %>
+</div>
 <ul class="entry-holder list-unstyled"></ul>
 <div class='more btn btn-primary'>
   More
