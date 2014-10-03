@@ -1,5 +1,5 @@
 <div class="panel panel-primary">
-  <div class="panel-heading togglable">
+  <div class="panel-heading togglable toggle-root">
     <br>
     <h3 class="panel-title togglable">
       <ul class='list-inline togglable'>
@@ -9,8 +9,8 @@
           </a>
         </li>
         <li class='pull-right togglable'>
-          <a class='feed-link'><%= entry.escape('feed_title') %></a> -  
-          <%= (new Date(entry.get('published_at'))).toString() %>
+          <a class='feed-link'><%= entry.escape('feed_title') %></a> - 
+          <%= date %>
         </li>
       </ul>
     </h3>

@@ -9,7 +9,7 @@ Aggredile.Views.EntryShow = Backbone.View.extend({
     // 'click .toggle-on': 'activate',
     // 'click .toggle-off': 'deactivate',
     'click .feed-link': 'visitFeed',
-    'click .togglable': 'toggleActive'
+    'click .toggle-root': 'toggleActive'
   },
 
   id: function() {
@@ -48,13 +48,28 @@ Aggredile.Views.EntryShow = Backbone.View.extend({
   },
 
   render: function () {
+    var d = new Date(this.model.get('published_at'));
+    var weekday = new Array(7);
+    weekday[0]=  "Sun";
+    weekday[1] = "Mon";
+    weekday[2] = "Tue";
+    weekday[3] = "Wed";
+    weekday[4] = "Thu";
+    weekday[5] = "Fri";
+    weekday[6] = "Sat";
+
+    var day = weekday[d.getDay()];
+    var dateStr = day + " " + d.toLocaleDateString() + " " + d.toLocaleTimeString();
+
     if (this.active) {
       this.$el.html(this.showTemplate({
-        entry: this.model
+        entry: this.model,
+        date: dateStr
       }));
     } else {
       this.$el.html(this.titleTemplate({
-        entry: this.model
+        entry: this.model,
+        date: dateStr
       }));
     }
     return this;

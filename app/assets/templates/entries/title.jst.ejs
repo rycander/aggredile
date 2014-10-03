@@ -1,5 +1,5 @@
 <div class="panel panel-primary">
-  <div class="panel-heading togglable">
+  <div class="panel-heading togglable toggle-root">
     <h3 class="panel-title togglable">
       <% if (!entry.get('entry_visit_id')) { %>
         <ul class='list-inline unread togglable'>
@@ -9,7 +9,7 @@
         <li class='togglable'><%= entry.escape('title') %></li>
         <li class='pull-right togglable'>
           <%= entry.escape('feed_title') %> - 
-          <%= (new Date(entry.get('published_at'))).toString() %>
+          <%= date %>
         </li>
       </ul>
     </h3>

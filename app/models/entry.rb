@@ -17,10 +17,10 @@ class Entry < ActiveRecord::Base
   has_many :entry_visits, dependent: :destroy
 
   def self.create_from_json!(entry, feed)
-    if (entry.try(:link) || entry.try(:url)) && entry.try(:published) && entry.try(:title)
+    if (entry.try(:link) || entry.try(:url)) && entry.try(:title)
       Entry.create!({
         url: entry.try(:link) || entry.try(:url),
-        published_at: entry.published,
+        published_at: entry.published || DateTime.now,
         content: entry.try(:content) || entry.try(:summary),
         title: entry.try(:title),
         feed_id: feed.id
