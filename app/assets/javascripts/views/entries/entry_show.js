@@ -6,9 +6,10 @@ Aggredile.Views.EntryShow = Backbone.View.extend({
   active: false,
 
   events: {
-    'click .toggle-on': 'activate',
-    'click .toggle-off': 'deactivate',
-    'click .feed-link': 'visitFeed'
+    // 'click .toggle-on': 'activate',
+    // 'click .toggle-off': 'deactivate',
+    'click .feed-link': 'visitFeed',
+    'click .togglable': 'toggleActive'
   },
 
   id: function() {
@@ -29,6 +30,17 @@ Aggredile.Views.EntryShow = Backbone.View.extend({
     this.active = true;
     this.model.visit();
     this.render();
+  },
+
+  toggleActive: function (event) {
+    $clicked = $(event.target);
+    if ( $clicked.hasClass('togglable')) {
+      if (this.active) {
+        this.deactivate();
+      } else {
+        this.activate();
+      }
+    }
   },
 
   visitFeed: function (event) {

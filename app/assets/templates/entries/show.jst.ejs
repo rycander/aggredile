@@ -1,14 +1,14 @@
 <div class="panel panel-primary">
-  <div class="panel-heading">
-    <div class='toggle-off'><br></div>
-    <h3 class="panel-title">
-      <ul class='list-inline'>
-        <li>
+  <div class="panel-heading togglable">
+    <br>
+    <h3 class="panel-title togglable">
+      <ul class='list-inline togglable'>
+        <li class='togglable'>
           <a href="<%= entry.escape('url') %>">
             <%= entry.escape('title') %>
           </a>
         </li>
-        <li class='pull-right'>
+        <li class='pull-right togglable'>
           <a class='feed-link'><%= entry.escape('feed_title') %></a> -  
           <%= (new Date(entry.get('published_at'))).toString() %>
         </li>

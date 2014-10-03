@@ -1,13 +1,13 @@
 <div class="panel panel-primary">
-  <div class="panel-heading">
-    <h3 class="panel-title toggle-on">
+  <div class="panel-heading togglable">
+    <h3 class="panel-title togglable">
       <% if (!entry.get('entry_visit_id')) { %>
-        <ul class='list-inline unread'>
+        <ul class='list-inline unread togglable'>
       <% } else { %>
-        <ul class='list-inline'>
+        <ul class='list-inline togglable'>
       <% }%>
-        <li><%= entry.escape('title') %></li>
-        <li class='pull-right clearfix'>
+        <li class='togglable'><%= entry.escape('title') %></li>
+        <li class='pull-right togglable'>
           <%= entry.escape('feed_title') %> - 
           <%= (new Date(entry.get('published_at'))).toString() %>
         </li>

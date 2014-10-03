@@ -26,6 +26,10 @@ button.button_to {
   margin-left: 20px;
 }
 
+.reader .panel-heading {
+  overflow: auto;
+}
+
 .reader .entry-holder {
   padding: 25px;
 }
