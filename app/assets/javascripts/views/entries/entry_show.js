@@ -32,7 +32,6 @@ Aggredile.Views.EntryShow = Backbone.View.extend({
   },
 
   visitFeed: function (event) {
-    alert('clicked');
     Backbone.history.navigate('feed/' + this.model.get('feed_id'), {trigger: true});
   },
 
