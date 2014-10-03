@@ -21,7 +21,7 @@ class Feed < ActiveRecord::Base
     feed = Feed.find_by_url(url);
     unless (feed)
       f = Feedjira::Feed.fetch_and_parse(url)
-      puts f
+      
       feed = Feed.create!(title: f.title, url: url, description: f.description)
       f.entries.each do |entry|
         Entry.create_from_json!(entry,feed)

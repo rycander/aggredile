@@ -9,7 +9,7 @@
         <li><%= entry.escape('title') %></li>
         <li class='pull-right clearfix'>
           <%= entry.escape('feed_title') %> - 
-          <%= entry.escape('published_at') %>
+          <%= (new Date(entry.get('published_at'))).toString() %>
         </li>
       </ul>
     </h3>

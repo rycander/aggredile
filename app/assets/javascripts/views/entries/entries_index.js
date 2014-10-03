@@ -11,9 +11,14 @@ Aggredile.Views.EntriesIndex = Backbone.CompositeView.extend({
   },
 
   initialize: function (options) {
+    this.remove();
+    $('ul.entry-holder').empty();
+    this.collection.reset();
+    this.collection.fetch();
+
     this.listenTo(this.collection, 'add', this.addEntry);
     this.listenTo(this.collection, 'sync add', this.render);
-    this.listenTo(this.collection, 'refreshAdd', this.refreshAdd)
+    this.listenTo(this.collection, 'refreshAdd', this.refreshAdd);
 
     this.collection.each( function(model){
       this.addEntry(model);
@@ -74,8 +79,7 @@ Aggredile.Views.EntriesIndex = Backbone.CompositeView.extend({
     for (var i = 0; i < reversedCollection.length; ++i) {
       this.prependEntry(reversedCollection[i]);
     }
-  },  
-  
+  },
 
   addMore: function () {
     this.pageCount += 1;
