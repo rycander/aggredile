@@ -1,3 +1,4 @@
+<div class='background'>
 <div class='auth-page'>
   <div class='auth-holder'>
     <% if flash[:errors] %>
@@ -9,7 +10,11 @@
     <% end %>
 
     <form class="form-signin" action="<%= session_url %>" method="post">
-      <h2 class="form-signin-heading">Welcome Back</h2>
+      <h2 class="form-signin-heading">
+        Aggredile
+        <br>
+        <img src="http://i.imgur.com/DRVeUaD.png">
+      </h2>
       <input
         type="hidden"
         name="authenticity_token"
@@ -38,7 +43,8 @@
       <br>
       <%= link_to "Sign Up", new_user_url %> or
       <br>
-      <%= link_to "Sign in as Guest", new_user_url %>
+      <%= link_to "Sign in as Guest", new_guest_url %>
     </div>
   </div>
+</div>
 </div>

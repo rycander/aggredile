@@ -3,11 +3,12 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create]
   resource :session, only: [:new, :create, :destroy] 
-  
+  get 'users', to: 'users#guest', as: 'new_guest'
+
   namespace :api, defaults: { format: :json } do
     resources :feeds, only: [:index, :show, :create] do
       resources :entries, only: [:index]
-      get 'entries/:page', to: 'enries#index', as: 'feed_entries_at_page'
+      get 'entries/:page', to: 'entries#index', as: 'feed_entries_at_page'
     end
     get 'entries', to: 'entries#user_entries', as: 'user_entries'
     get 'entries/:page', to: 'entries#user_entries', as: 'user_entries_at_page'

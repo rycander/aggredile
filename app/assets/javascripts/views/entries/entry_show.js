@@ -26,7 +26,6 @@ Aggredile.Views.EntryShow = Backbone.View.extend({
   activate: function(event) {
     this.trigger('activate', this);
     this.active = true;
-    console.log(this.model.id);
     this.model.visit();
     this.render();
   },

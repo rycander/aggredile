@@ -38,7 +38,7 @@
   padding: 25px;
   margin: 50px auto;
   text-align: center;
-  background-color: white;
+  background-color: #EEEEEE;
   border-radius: 20px;
 }
 .auth-page{
@@ -48,5 +48,5 @@
   top: 0;
   bottom: 0;
 
-  background-color: #eeeeee;
+  background-color: #DDDDDD;
 }

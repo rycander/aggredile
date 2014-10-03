@@ -21,6 +21,7 @@ class Feed < ActiveRecord::Base
     feed = Feed.find_by_url(url);
     unless (feed)
       f = Feedjira::Feed.fetch_and_parse(url)
+      puts f
       feed = Feed.create!(title: f.title, url: url, description: f.description)
       f.entries.each do |entry|
         Entry.create_from_json!(entry,feed)
@@ -30,7 +31,7 @@ class Feed < ActiveRecord::Base
   end
 
   def latest_entries
-    reload if updated_at < 100.seconds.ago
+    reload if updated_at < 1.seconds.ago
     entries
   end
 

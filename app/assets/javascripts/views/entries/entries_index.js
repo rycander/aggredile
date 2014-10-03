@@ -13,7 +13,11 @@ Aggredile.Views.EntriesIndex = Backbone.CompositeView.extend({
   initialize: function (options) {
     this.listenTo(this.collection, 'add', this.addEntry);
     this.listenTo(this.collection, 'sync add', this.render);
-    view = this;
+    this.listenTo(this.collection, 'refreshAdd', this.refreshAdd)
+
+    this.collection.each( function(model){
+      this.addEntry(model);
+    }.bind(this));
   },
 
   redirectToHome: function () {
@@ -48,8 +52,13 @@ Aggredile.Views.EntriesIndex = Backbone.CompositeView.extend({
     this.listenTo(showView, 'activate', this.toggleExpand);
   },
 
+  prependEntry: function (model) {
+    var showView = new Aggredile.Views.EntryShow({model: model});
+    this.prependSubview('ul.entry-holder', showView);
+    this.listenTo(showView, 'activate', this.toggleExpand);
+  },
+
   newFeed: function (event) {
-    alert('getting here');
     event.preventDefault();
     var url = $('#new-feed-url').val();
     $('#new-feed-url').val('');
@@ -60,14 +69,26 @@ Aggredile.Views.EntriesIndex = Backbone.CompositeView.extend({
     });
   },
 
+  refreshAdd: function () {
+    var reversedCollection = this.collection.last(this.collection.length).reverse();
+    for (var i = 0; i < reversedCollection.length; ++i) {
+      this.prependEntry(reversedCollection[i]);
+    }
+  },  
+  
+
   addMore: function () {
     this.pageCount += 1;
     this.collection.next();
+    this.postToTop = false;
   },
 
   refresh: function (){
     event.preventDefault();
-    this.collection.fetch();
+    this.collection.fetch({silent: true, success: function () {
+      this.collection.trigger('refreshAdd');
+    }.bind(this)});
+    this.postToTop = true;
   },
 
   toggleExpand: function (newEntry) {

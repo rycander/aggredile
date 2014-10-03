@@ -1,12 +1,16 @@
 Backbone.CompositeView = Backbone.View.extend({
   addSubview: function (selector, subview) {
-    this.subviews(selector).push(subview);
-    this.attachSubview(selector, subview.render());
+    if (this.notDuplicateSubview(selector, subview)){
+      this.subviews(selector).push(subview);
+      this.attachSubview(selector, subview.render());
+    }
   },
 
   prependSubview: function (selector, subview) {
-    this.subviews(selector).unshift(subview);
-    this.attachSubview(selector, subview.render(), true);
+    if (this.notDuplicateSubview(selector, subview)){
+      this.subviews(selector).unshift(subview);
+      this.attachSubview(selector, subview.render(), true);
+    }
   },  
 
   attachSubview: function (selector, subview, prepend) {
@@ -16,6 +20,16 @@ Backbone.CompositeView = Backbone.View.extend({
       this.$(selector).append(subview.$el);
     }
     subview.delegateEvents();
+  },
+
+  notDuplicateSubview: function (selector, subview) {
+    var id  = subview.model.get('id');
+    for (var i = 0; this.subviews()[selector] && i < this.subviews()[selector].length; ++i) {
+      if (this.subviews()[selector][i].model.get('id') === id) {
+        return false;
+      }
+    }
+    return true;
   },
 
   attachSubviews: function () {

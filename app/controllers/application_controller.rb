@@ -5,7 +5,11 @@ class ApplicationController < ActionController::Base
 
   private
   def logout!(user)
-    current_user.reset_session_token!
+    if current_user.guest
+      current_user.delete
+    else
+      current_user.reset_session_token!
+    end
     @current_user = nil
     session[:session_token] = nil
   end
