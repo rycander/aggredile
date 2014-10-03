@@ -5,6 +5,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       login!(@user)
+      feed = Feed.find_or_create_by_url('aggredile.tumblr.com/rss')
+      UserFeed.create(user_id: @user.id, feed_id: feed.id)
       redirect_to root_url
     else
       flash.now[:errors] = @user.errors.full_messages
@@ -20,7 +22,7 @@ class UsersController < ApplicationController
     })
     if @user.save
       login!(@user)
-      feed = Feed.find_or_create_by_url('http://aggredile.tumblr.com/rss')
+      feed = Feed.find_or_create_by_url('aggredile.tumblr.com/rss')
       UserFeed.create(user_id: @user.id, feed_id: feed.id)
       redirect_to root_url
     else
